@@ -36,6 +36,7 @@ Bablo (Бабло) is a web scraping tool designed to explore and collect URLs f
    ```
    go run main.go -t <thread-count> https://example.com
    ```
+5. **Automation:** For automating this tool with others check - https://github.com/grozdniyandy/hackerlines
 
 ## Installation
 You can either check the "Usage" or download already compiled code from "releases".
