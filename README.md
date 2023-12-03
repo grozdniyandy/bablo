@@ -29,6 +29,7 @@ Bablo (Бабло) is a web scraping tool designed to explore and collect URLs f
 4. **Install colly:** Run the following commands:
    ```
    go mod init bablo
+   go mod tidy
    go get github.com/gocolly/colly/v2@latest
    ```
 5. **Run the tool:** Run the tool using the following command:
