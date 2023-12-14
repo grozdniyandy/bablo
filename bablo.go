@@ -256,10 +256,9 @@ func displayCustomText(customTextDone chan<- bool) {
 
 func main() {
     customTextDone := make(chan bool)
-
     go displayCustomText(customTextDone)
-
     <-customTextDone
+    
     threadsPtr := flag.Int("t", 10, "number of concurrent workers")
     disableRedirectsPtr := flag.Bool("dr", false, "disable following redirects")
     outputPtr := flag.String("o", "", "output file to write crawled URLs")
@@ -272,7 +271,8 @@ func main() {
     flag.Parse()
     args := flag.Args()
     if len(args) < 1 {
-        fmt.Println("Missing URL argument")
+        fmt.Println("Missing URL argument. Please provide a URL to crawl.")
+        printUsage()
         return
     }
     numWorkers := *threadsPtr
@@ -282,3 +282,16 @@ func main() {
     minDuration := time.Minute
     crawl(args[0], minDuration, numWorkers, headers, disableRedirects, outputFile, proxyURL)
 }
+
+func printUsage() {
+    fmt.Println("\nUsage: main.go [flags] <url>")
+    fmt.Println("Flags:")
+    fmt.Println("  -t int       Number of concurrent workers (default 10)")
+    fmt.Println("  -dr          Disable following redirects")
+    fmt.Println("  -o string    Output file to write crawled URLs")
+    fmt.Println("  -p string    Proxy URL (e.g., 'http://127.0.0.1:8080', 'socks5://127.0.0.1:9050')")
+    fmt.Println("  -H string    Add header (can be used multiple times)")
+    fmt.Println("\nExample:")
+    fmt.Println("  go run main.go -t 100 -o output.txt -p 'http://127.0.0.1:8080' -H 'User-Agent: CustomAgent' http://example.com")
+}
+
