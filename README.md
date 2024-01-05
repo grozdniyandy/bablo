@@ -2,7 +2,7 @@
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
-Bablo (Бабло) is a web scraping tool designed to explore and collect URLs from a specified starting URL. It utilizes the "github.com/gocolly/colly/v2" package.
+Bablo (Бабло) is a web scraping tool designed to explore and collect URLs from a specified starting URL.
 
 ## Table of Contents
 - [Features](https://github.com/grozdniyandy/bablo#features)
@@ -26,8 +26,10 @@ Bablo (Бабло) is a web scraping tool designed to explore and collect URLs f
     export PATH=$PATH:/usr/local/go/bin
     go version
     ```
-3. **Install colly:** Run the following commands:
+3. **Install dependencies:** Run the following commands:
    ```
+   mkdir bablo
+   cd bablo
    go mod init bablo
    go get golang.org/x/net/html && go get golang.org/x/net/proxy
    ```
@@ -50,7 +52,7 @@ Bablo (Бабло) is a web scraping tool designed to explore and collect URLs f
 You can either check the "Usage" or download already compiled code from "releases".
 
 ## Dependencies
-This code uses the Go standard library and one external dependency github.com/gocolly/colly/v2.
+This code uses the Go standard library and two external dependencies golang.org/x/net/html and golang.org/x/net/proxy.
 
 ## License
 This code is released under the [MIT License](LICENSE).
